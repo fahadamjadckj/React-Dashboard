@@ -1,4 +1,4 @@
-
+import { motion } from "motion/react"
 
 interface props {
     className: string,
@@ -10,10 +10,18 @@ interface props {
 
 export default function MainsectionCard({ children, className, value, desc }: props) {
     return (
-        <div className={`${className}`}>
+        <motion.div 
+        initial={{
+            opacity: 0
+        }}
+        animate={{
+            opacity: 1
+        }}
+        transition={{ delay: 0.5, duration: 1 }}
+        className={`${className}`}>
             {children}
             <h2 className="font-bold text-xl">{value}</h2>
             <p className="font-thin text-sm">{desc}</p>
-        </div>
+        </motion.div>
     )
 }

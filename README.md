@@ -27,3 +27,4 @@ npm run dev
 ## Upcoming features
 
 - Framer motion integration for animations
+- Responsive layouts and fonts

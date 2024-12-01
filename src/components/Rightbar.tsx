@@ -1,10 +1,21 @@
 import { Bell, MailPlus, Calendar, NotebookText } from "lucide-react";
 import avatarIcon from "../assets/avatar.jpg"
+import {motion} from "motion/react"
 
 
 export default function Rightbar() {
     return (
-        <div className="col-span-1 bg-primary-light p-4 rounded-lg max-h-screen">
+        <motion.div 
+        initial={{
+            opacity: 0,
+            scale: 0
+        }}
+        animate={{
+            opacity: 1,
+            scale: 1
+        }}
+        transition={{duration: 1, delay: 1.5}}
+        className="col-span-1 bg-primary-light p-4 rounded-lg max-h-screen">
             
             {/* / right header */}
             <div className="flex justify-center items-center gap-4">
@@ -82,6 +93,6 @@ export default function Rightbar() {
 
             </div>
 
-        </div>
+        </motion.div>
     )
 }

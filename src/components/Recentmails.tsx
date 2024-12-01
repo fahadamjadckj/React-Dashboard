@@ -1,13 +1,22 @@
 
 import avatarIcon from "../assets/avatar.jpg"
 import maleAvatarIcon from "../assets/male-avatar.jpg"
+import {motion} from "motion/react"
 
 interface props {
     className: string
 }
 export default function Recentmails({ className }: props ) {
     return (
-        <div className={`${className} p-4  rounded-lg shadow-lg`}>
+        <motion.div 
+        initial={{
+            opacity: 0
+        }}
+        animate={{
+            opacity: 1
+        }}
+        transition={{ delay: 0.5, duration: 1 }}
+         className={`${className} p-4  rounded-lg shadow-lg`}>
             <h3 className="font-bold text-2xl">Recent Emails</h3>
             <br></br>
 
@@ -64,6 +73,6 @@ export default function Recentmails({ className }: props ) {
                     <p>3:12 PM</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

@@ -5,6 +5,7 @@ import MainMidRegion from "./MainMidRegion"
 import { useQuery } from "@tanstack/react-query"
 import getData from "../utils/data"
 import { LoaderCircle } from "lucide-react"
+import { motion } from "motion/react"
 
 const data = [
   {
@@ -59,9 +60,13 @@ export default function Mainsection() {
 
     if(query.isLoading) {
         return (
-            <main className="flex justify-center items-center col-span-4 p-6 w-full text-4xl">
-                <LoaderCircle height={100} width={100} color="black" className="animate-spin" />
-            </main>
+            <motion.main className="flex justify-center items-center col-span-4 p-6 w-full">
+
+              <motion.div animate={{rotate: 360}} transition={{duration: 1}} className="flex justify-center items-center"><LoaderCircle height={100} /></motion.div>
+              <h1 className="m-4">loading</h1>
+              
+               
+            </motion.main>
         )
     }
 
@@ -69,8 +74,12 @@ export default function Mainsection() {
 
     if (query.isSuccess) {
         return (
-        <main className="gap-4 col-span-4 rounded-lg">
-            <h1 className="col-span-4 font-semibold text-2xl">Good Morning, Fahad!</h1>
+        <motion.main className="gap-4 col-span-4 rounded-lg">
+            <motion.h1
+              initial={{x: -100}}
+              animate={{x: 0}}
+              transition={{duration: 1}}
+            className="col-span-4 font-semibold text-2xl">Good Morning, Fahad!</motion.h1>
             <div className="gap-4 grid grid-cols-4 grid-rows-8">
                 
 
@@ -113,7 +122,7 @@ export default function Mainsection() {
 
 
             </div>
-        </main>
+        </motion.main>
     )
     }
 
