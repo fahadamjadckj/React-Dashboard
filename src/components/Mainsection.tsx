@@ -2,6 +2,9 @@ import { HandCoins, ChartPie, IdCard, CreditCard } from "lucide-react"
 import Recentmails from "./Recentmails"
 import MainsectionCard from "./MainsectionCard"
 import MainMidRegion from "./MainMidRegion"
+import { useQuery } from "@tanstack/react-query"
+import getData from "../utils/data"
+import { LoaderCircle } from "lucide-react"
 
 const data = [
   {
@@ -39,7 +42,7 @@ const data = [
     uv: 2390,
     pv: 3800,
     amt: 2500,
-  },
+  },    
   {
     name: 'Page G',
     uv: 3490,
@@ -49,7 +52,23 @@ const data = [
 ];
 
 export default function Mainsection() {
-    return (
+
+    const query = useQuery({ queryKey: ['dashData'], queryFn: getData })
+
+    // sets the loading screen
+
+    if(query.isLoading) {
+        return (
+            <main className="flex justify-center items-center col-span-4 p-6 w-full text-4xl">
+                <LoaderCircle height={100} width={100} color="black" className="animate-spin" />
+            </main>
+        )
+    }
+
+    // sets the main screen on success but this doesnt use fetched data!
+
+    if (query.isSuccess) {
+        return (
         <main className="gap-4 col-span-4 rounded-lg">
             <h1 className="col-span-4 font-semibold text-2xl">Good Morning, Fahad!</h1>
             <div className="gap-4 grid grid-cols-4 grid-rows-8">
@@ -67,7 +86,7 @@ export default function Mainsection() {
                 {/* / card 2 */}
 
 
-                <MainsectionCard value={"12"} desc="Uncategorized Transacton" className="flex flex-col justify-center items-start gap-4 col-span-1 bg-primary-fg shadow-lg mt-12 p-2 rounded-lg">
+                <MainsectionCard value={"12"} desc="Uncategorized Transaction" className="flex flex-col justify-center items-start gap-4 col-span-1 bg-primary-fg shadow-lg mt-12 p-2 rounded-lg">
                         <ChartPie color="black" height={40} width={40} />
                 </MainsectionCard>
 
@@ -79,7 +98,7 @@ export default function Mainsection() {
 
                 {/* / card 4 */}
 
-                <MainsectionCard value="$3,462" desc="Uncategorized Transaction" className="flex flex-col justify-center items-start gap-4 col-span-1 bg-primary-fg shadow-lg mt-12 p-2 rounded-lg">
+                <MainsectionCard value="$3,462" desc="Available for withdrawl" className="flex flex-col justify-center items-start gap-4 col-span-1 bg-primary-fg shadow-lg mt-12 p-2 rounded-lg">
                     <CreditCard color="black" height={40} width={40} />
                 </MainsectionCard>
 
@@ -96,4 +115,7 @@ export default function Mainsection() {
             </div>
         </main>
     )
+    }
+
+    
 }

@@ -5,6 +5,7 @@ import Rightbar from "./components/Rightbar"
 
 
 export default function App() {
+
   return (
     <Layout>
       <Sidenav />
