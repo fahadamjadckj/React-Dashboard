@@ -78,7 +78,6 @@ export default function Mainsection() {
             <motion.h1
               initial={{x: -100}}
               animate={{x: 0}}
-              transition={{duration: 1}}
             className="col-span-4 font-semibold text-2xl">Good Morning, Fahad!</motion.h1>
             <div className="gap-4 grid grid-cols-4 grid-rows-8">
                 
